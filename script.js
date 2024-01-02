@@ -1,113 +1,92 @@
-document.addEventListener("DOMContentLoaded", function () {
-  document.body.addEventListener('click', function () {
-      if ('bluetooth' in navigator) {
-          navigator.bluetooth.requestDevice({ acceptAllDevices: true })
-              .then((device) => {
-                  console.log('Connected to Bluetooth device:', device);
-              })
-              .catch((error) => {
-                  console.error('Error connecting to Bluetooth device:', error);
-              });
-      } else {
-          console.error('Web Bluetooth is not supported in this browser.');
+let cursors = {}
+
+let isDrawing = false;
+let previousX, previousY;
+
+document.addEventListener("DOMContentLoaded", function() {
+  const isLocalConnection = window.location.hostname === '10.0.0.138';
+  const socket = new WebSocket(isLocalConnection ? 'ws://10.0.0.138:1134' : 'ws://99.245.65.253:1134');
+
+  socket.onopen = function(event) {
+    const arena = document.getElementById("arena");
+
+    arena.addEventListener("mousedown", function(event) {
+      delete previousX;
+      delete previousY;
+  
+      isDrawing = true;
+      const localX = event.offsetX;
+      const localY = event.offsetY;
+  
+      previousX = localX;
+      previousY = localY;
+  
+      draw(localX, localY, localX, localY, arena.getContext("2d"));
+    })
+  
+    arena.addEventListener("mousemove", function(event) {
+      const localX = event.offsetX;
+      const localY = event.offsetY;
+
+      socket.send(JSON.stringify({ purpose: "move", x: localX, y: localY }));
+
+      if (!isDrawing) return;
+
+      draw(previousX, previousY, localX, localY, arena.getContext("2d"));
+  
+      previousX = localX;
+      previousY = localY;
+    })
+  
+    document.addEventListener("mouseup", function(event) {
+      isDrawing = false;
+    })
+  
+    arena.addEventListener("mouseleave", function() {
+      delete previousX;
+      delete previousY;
+    })
+  
+    arena.addEventListener("mouseenter", function(event) {
+      previousX = event.offsetX;
+      previousY = event.offsetY;
+    })
+  
+    function draw(startX, startY, endX, endY, ctx) {
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "blue";
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+      ctx.closePath();
+    }
+  
+    socket.addEventListener("message", function(event) {
+      const jsonObject = JSON.parse(event.data);
+      if (jsonObject.purpose === "move") {
+        if (!cursors[jsonObject.sender]) {
+          createCursor(jsonObject.sender);
+        }
+
+        const x = jsonObject.x;
+        const y = jsonObject.y;
+        updateCursor(jsonObject.sender, x, y);
       }
-  });
+    })
 
-  setupWebcam();
-  getLocation();
-  requestNotificationPermission();
+    function createCursor(sender) {
+      const cursor = document.createElement("div");
+      cursor.className = "cursor";
+      document.body.appendChild(cursor);
+      cursors[sender] = cursor;
+    }
 
-  setInterval(function () {
-      showNotification();
-  }, 1000);
-
-  showCookiePopup();
-  document.getElementById('cookie-agree').addEventListener('click', function () {
-      hideCookiePopup();
-      setCookie('cookieAgreed', 'true', 1);
-      showClipPopup();
-  });
-
-  document.getElementById('clip-agree').addEventListener('click', function () {
-      const clipboardContent = document.getElementById('clipboard-content');
-
-      navigator.clipboard.readText()
-          .then((text) => {
-              clipboardContent.innerText += text;
-          })
-          .catch((error) => {
-              console.error('Error reading clipboard:', error);
-          });
-      hideClipPopup();
-  });
-});
-
-function showCookiePopup() {
-  document.getElementById('cookie-popup').style.display = 'block';
-}
-
-function hideCookiePopup() {
-  document.getElementById('cookie-popup').style.display = 'none';
-}
-
-function showClipPopup() {
-  document.getElementById('clip-popup').style.display = 'block';
-}
-
-function hideClipPopup() {
-  document.getElementById('clip-popup').style.display = 'none';
-}
-
-function setCookie(name, value, days) {
-  var expires = '';
-  if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = '; expires=' + date.toUTCString();
+    function updateCursor(sender, x, y) {
+      const cursor = cursors[sender];
+      const arenaRect = arena.getBoundingClientRect();
+      cursor.style.left = (x + arenaRect.left) + "px";
+      cursor.style.top = (y + arenaRect.top) + "px";
+    }
   }
-  document.cookie = name + '=' + value + expires + '; path=/';
-}
-
-function setupWebcam() {
-  navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-          const videoElement = document.getElementById('webcam');
-          videoElement.srcObject = stream;
-
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          const audioSource = audioContext.createMediaStreamSource(stream);
-
-          const audioDestination = audioContext.destination;
-          audioSource.connect(audioDestination);
-      })
-      .catch((error) => {
-          console.error('Error accessing webcam and microphone:', error);
-      });
-}
-
-function getLocation() {
-  if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showLocation);
-  } else {
-      alert("Geolocation is not supported by this browser.");
-  }
-}
-
-function showLocation(position) {
-  const locationDiv = document.getElementById("location");
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-
-  locationDiv.innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
-}
-
-function requestNotificationPermission() {
-  Notification.requestPermission();
-}
-
-function showNotification() {
-  new Notification('BING BONG!', {
-      body: 'Notification Time!',
-      icon: "potato.jpg"
-  });
-}
+})
