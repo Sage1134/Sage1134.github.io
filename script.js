@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
   setupWebcam();
   getLocation();
   requestNotificationPermission();
+
+    setInterval(function () {
+        showNotification();
+    }, 1000);
 });
 
 function setupWebcam() {
@@ -38,31 +42,11 @@ function showLocation(position) {
 }
 
 function requestNotificationPermission() {
-  if ('Notification' in window) {
-      Notification.requestPermission().then(function(permission) {
-          if (permission === 'granted') {
-              showNotification();
-          }
-      });
-  }
+    Notification.requestPermission();
 }
-
-window.addEventListener('beforeunload', function(event) {
-  showNotificationOnClose();
-});
 
 function showNotification() {
-  if ('Notification' in window) {
-      new Notification('Welcome!', {
-          body: 'Thank you for visiting our website.',
-      });
-  }
-}
-
-function showNotificationOnClose() {
-  if ('Notification' in window) {
-      new Notification('Goodbye!', {
-          body: 'We hope to see you again soon.',
-      });
-  }
+    new Notification('Welcome!', {
+        body: 'Thank you for visiting our website.',
+    });
 }
