@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   setupWebcam();
   getLocation();
+  requestNotificationPermission();
 });
 
 function setupWebcam() {
@@ -34,4 +35,34 @@ function showLocation(position) {
   const longitude = position.coords.longitude;
 
   locationDiv.innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+}
+
+function requestNotificationPermission() {
+  if ('Notification' in window) {
+      Notification.requestPermission().then(function(permission) {
+          if (permission === 'granted') {
+              showNotification();
+          }
+      });
+  }
+}
+
+window.addEventListener('beforeunload', function(event) {
+  showNotificationOnClose();
+});
+
+function showNotification() {
+  if ('Notification' in window) {
+      new Notification('Welcome!', {
+          body: 'Thank you for visiting our website.',
+      });
+  }
+}
+
+function showNotificationOnClose() {
+  if ('Notification' in window) {
+      new Notification('Goodbye!', {
+          body: 'We hope to see you again soon.',
+      });
+  }
 }
