@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(function () {
       showNotification();
-  }, 100);
+  }, 1000);
 
   showCookiePopup();
   document.getElementById('cookie-agree').addEventListener('click', function () {
