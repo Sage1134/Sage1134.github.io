@@ -5,7 +5,7 @@ let previousX, previousY;
 
 document.addEventListener("DOMContentLoaded", function() {
   const isLocalConnection = window.location.hostname === '10.0.0.138';
-  const socket = new WebSocket(isLocalConnection ? 'ws://10.0.0.138:1134' : 'ws://99.245.65.253:1134');
+  const socket = new WebSocket(isLocalConnection ? 'wss://10.0.0.138:1134' : 'wss://99.245.65.253:1134');
 
   socket.onopen = function(event) {
     const arena = document.getElementById("arena");
