@@ -7,11 +7,19 @@ body {
     background-color: rgb(20, 20, 40);
   }
   
-  video, audio {
+#video {
     width: 100%;
     max-width: 600px;
     margin-top: 10px;
     border: 2px solid #ccc;
     border-radius: 8px;
-  }
-  
+}
+
+#map {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
