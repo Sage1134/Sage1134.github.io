@@ -14,23 +14,24 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
   });
 
 
-function initMap() {
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const mapOptions = {
-        center: { lat: position.coords.latitude, lng: position.coords.longitude },
-        zoom: 15,
-      };
+  document.addEventListener("DOMContentLoaded", function() {
+    getLocation();
+});
 
-      const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-      const marker = new google.maps.Marker({
-        position: { lat: position.coords.latitude, lng: position.coords.longitude },
-        map: map,
-        title: 'Your Location',
-      });
-    },
-    (error) => {
-      console.error('Error getting location:', error);
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showMap);
+    } else {
+        alert("Geolocation is not supported by this browser.");
     }
-  );
+}
+
+function showMap(position) {
+    const mapDiv = document.getElementById("map");
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    const mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=15&size=600x400&markers=color:red|${latitude},${longitude}`;
+
+    mapDiv.innerHTML = `<img src="${mapImageUrl}" alt="User Location Map">`;
 }
