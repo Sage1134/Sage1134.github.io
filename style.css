@@ -19,3 +19,88 @@ body {
     border: 2px solid #ccc;
     border-radius: 8px;
 }
+
+
+.cookie-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.cookie-popup p {
+    margin: 0;
+}
+
+.cookie-popup a {
+    text-decoration: underline;
+    color: #333;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.cookie-popup button {
+    margin-top: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#clipboard-content {
+    margin-top: 10px;
+    color: white;
+}
+
+#local-storage-content {
+    margin-top: 10px;
+    color: white;
+}
+
+.clip-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.clip-popup p {
+    margin: 0;
+}
+
+.clip-popup a {
+    text-decoration: underline;
+    color: #333;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.clip-popup button {
+    margin-top: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
