@@ -1,15 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Cursor Arena</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio | Raymond Zheng</title>
 </head>
 <body>
+    <div id="overlay">
     <div id="container">
-        <h1>Cursor Arena</h1>
-        <canvas id="arena" height="600" width="800"></canvas>
+        <div id="head"></div>
+        <div id="nav">
+            <button id="introButton">Home</button>
+            <button id="projectsButton">Projects</button>
+            <button id="contactButton">Contact</button>
+        </div>
+        <div id="intro">
+            <div id="introContainer">
+                <h1 id="introHeader">Hello, I'm Raymond</h1>
+                <div id="introTextBox">
+                    <p id="introText">I am an aspiring Computer Science enthusiast that is proficient in Python, C#, C++, HTML, CSS and Javascript. I am passionate about leveraging technology to drive innovative solutions to various problems. I am eager to contribute my experiences to the field of Computer Science and proceed on a rewarding journey of continuous learning and growth.</p>
+                </div>
+            </div>
+            <div id="highlightedProject">
+                <div id="highlightedContents">
+                    <h1>Recent Project</h1>
+                    <button id="highlightedButton">Explore Now</button>
+                </div>
+                <div id="overlay"></div>
+            </div>
+        </div>
+        <div id="projects">
+            <h1 id="projectsHeader">Projects</h1>
+            <div id="projectFolder">
+                <div class="project">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Example Project</label>
+                        <div class="projectImage" id="exampleProject">
+                            <button class="projectButton" id="exampleProjectButton">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Example Project</label>
+                        <div class="projectImage" id="exampleProject">
+                            <button class="projectButton" id="exampleProjectButton">View Project</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Example Project</label>
+                        <div class="projectImage" id="exampleProject">
+                            <button class="projectButton" id="exampleProjectButton">View Project</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Example Project</label>
+                        <div class="projectImage" id="exampleProject">
+                            <button class="projectButton" id="exampleProjectButton">View Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="contactInfo">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> Raymondzheng2000@gmail.com</p>
+                <p><strong>Phone:</strong> +1 437-986-6118</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/raymond-zheng-b50b62288" class="link">Visit my LinkedIn</a></p>
+                <p><strong>Github:</strong> <a href="https://github.com/Sage1134" class="link">Visit my Github</a></p>
+            </div>
+        </div>
     </div>
-    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
