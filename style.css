@@ -98,7 +98,7 @@ body {
     border-right: 0;
     border-color: rgb(70, 110, 140);
     border-style: solid;
-    background-image: url("secureInsights.png");
+    background-image: url("Images/secureInsights.png");
     background-size: cover;
     background-position: top;
     margin-top: 1.75vw;
@@ -211,6 +211,41 @@ body {
 #contactInfo p {
     font-size: 1.8vw;
     margin: 10px 0;
+}
+
+.projectContainer {
+    height: 50%;
+    width: 60%;
+    margin-top: 20%;
+    padding: 2%;
+    background-color: black;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3%;
+    border-width: 1%;
+    border-style: solid;
+    border-color: black;
+}
+
+.project {
+    background-size: cover;
+    background-position: center;
+}
+
+#secureInsights {
+    background-image: url("Images/secureInsightsIcon.png");
+}
+
+#connect {
+    background-image: url("Images/connectIcon.png");
+}
+
+#cursorArena {
+    background-image: url("Images/cursorArenaIcon.png");
+}
+
+#minesweeper {
+    background-image: url("Images/minesweeperIcon.png");
 }
 
 ::-webkit-scrollbar {
