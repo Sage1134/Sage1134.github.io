@@ -6,7 +6,7 @@ body {
 }
 
 #container {
-    background-color: rgb(135, 150, 170);
+    background-color: rgb(90, 130, 160);
     max-width: 100%;
     display: flex;
     flex-direction: column;
@@ -69,16 +69,27 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+#gallery-container {
+    overflow: hidden;
+}
+
 #gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 10px;
+    padding-top: 1vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 10px);
+    margin-bottom: 10px;
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 40vh;
+    object-fit: fill;
+    border-radius: 1vh;
 }
 
 #projectTitle {
@@ -110,4 +121,24 @@ h1 {
 
 .descriptionObject {
     padding-left: 1vw;
+}
+
+h2 {
+    color: rgb(240, 240, 240);
+    font-size: 4vh;
+}
+
+.descriptionObject {
+    color: rgb(220, 220, 220);
+    font-size: 2vh;
+}
+
+li {
+    padding-top: 1vh;
+    color: rgb(220, 220, 220);
+    font-size: 2vh;
+}
+
+.header2 {
+    margin-top: 8vh;
 }
