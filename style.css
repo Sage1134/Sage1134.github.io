@@ -199,6 +199,18 @@ body {
     margin: 10px 0;
 }
 
+.navButton {
+    transition: opacity 0.15s;
+}
+
+.navButton:hover {
+    opacity: 0.8;
+}
+
+.navButton:active {
+    opacity: 0.5;
+}
+
 .projectContainer {
     width: 60%;
     margin: 20% auto;
