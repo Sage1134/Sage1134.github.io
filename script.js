@@ -77,35 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
     descriptionBox.textContent = 'Select an event to view its details.';
 });
 
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-    let i;
-    const slides = document.getElementsByClassName("slide");
-    const dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     // Initial page to show
     showPage('page1');
@@ -116,69 +87,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add click event listeners to navigation arrows
     leftArrow.addEventListener('click', function() {
-        // Determine current visible page
-        let currentPage;
-        if (document.getElementById('page1').style.display !== 'none') {
-            currentPage = 'page1';
-        } else if (document.getElementById('page2').style.display !== 'none') {
-            currentPage = 'page2';
-        } else if (document.getElementById('page3').style.display !== 'none') {
-            currentPage = 'page3';
-        } else if (document.getElementById('page4').style.display !== 'none') {
-            currentPage = 'page4';
-        }
-
-        // Determine which page to show next
-        if (currentPage === 'page1') {
-            hideAllPages();
-            showPage('page4'); // Wrap around to page4 if at the beginning
-        } else if (currentPage === 'page2') {
-            hideAllPages();
-            showPage('page1');
-        } else if (currentPage === 'page3') {
-            hideAllPages();
-            showPage('page2');
-        } else if (currentPage === 'page4') {
-            hideAllPages();
-            showPage('page3');
-        }
+        navigatePages(-1);
     });
 
     rightArrow.addEventListener('click', function() {
-        // Determine current visible page
-        let currentPage;
-        if (document.getElementById('page1').style.display !== 'none') {
-            currentPage = 'page1';
-        } else if (document.getElementById('page2').style.display !== 'none') {
-            currentPage = 'page2';
-        } else if (document.getElementById('page3').style.display !== 'none') {
-            currentPage = 'page3';
-        } else if (document.getElementById('page4').style.display !== 'none') {
-            currentPage = 'page4';
+        navigatePages(1);
+    });
+
+    // Function to navigate between pages
+    function navigatePages(direction) {
+        let currentPage = getCurrentPageId();
+        let nextPageId;
+
+        switch (currentPage) {
+            case 'page1':
+                nextPageId = (direction === 1) ? 'page2' : 'page6';
+                break;
+            case 'page2':
+                nextPageId = (direction === 1) ? 'page3' : 'page1';
+                break;
+            case 'page3':
+                nextPageId = (direction === 1) ? 'page4' : 'page2';
+                break;
+            case 'page4':
+                nextPageId = (direction === 1) ? 'page5' : 'page3';
+                break;
+            case 'page5':
+                nextPageId = (direction === 1) ? 'page6' : 'page4';
+                break;
+            case 'page6':
+                nextPageId = (direction === 1) ? 'page1' : 'page5';
+                break;
+            default:
+                break;
         }
 
-        // Determine which page to show next
-        if (currentPage === 'page1') {
-            hideAllPages();
-            showPage('page2');
-        } else if (currentPage === 'page2') {
-            hideAllPages();
-            showPage('page3');
-        } else if (currentPage === 'page3') {
-            hideAllPages();
-            showPage('page4');
-        } else if (currentPage === 'page4') {
-            hideAllPages();
-            showPage('page1'); // Wrap around to page1 if at the end
+        hideAllPages();
+        showPage(nextPageId);
+    }
+
+    // Function to get the ID of the current visible page
+    function getCurrentPageId() {
+        const pages = document.querySelectorAll('.page');
+        for (let page of pages) {
+            if (page.style.display === 'block') {
+                return page.id;
+            }
         }
-    });
+        return null;
+    }
 
     // Function to hide all pages
     function hideAllPages() {
-        document.getElementById('page1').style.display = 'none';
-        document.getElementById('page2').style.display = 'none';
-        document.getElementById('page3').style.display = 'none';
-        document.getElementById('page4').style.display = 'none';
+        const pages = document.querySelectorAll('.page');
+        for (let page of pages) {
+            page.style.display = 'none';
+        }
     }
 
     // Function to show a specific page
