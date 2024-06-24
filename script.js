@@ -1,89 +1,189 @@
 document.addEventListener('DOMContentLoaded', function() {
     const characteristics = [
-        { title: 'Leadership Skills', description: 'Leadership is crucial for guiding and motivating the mentorship team towards common goals.' },
-        { title: 'Communication Skills', description: 'Effective communication fosters clarity and understanding within the team and with mentees.' },
-        { title: 'Organizational Abilities', description: 'Organizational skills are essential for planning and executing mentorship activities efficiently.' },
-        { title: 'Empathy and Supportiveness', description: 'Empathy helps in understanding mentees\' perspectives and providing necessary support.' },
-        { title: 'Adaptability and Problem-Solving Skills', description: 'Adaptability and problem-solving are key for handling unexpected challenges in mentorship.' },
-        { title: 'Commitment and Dedication', description: 'Commitment ensures consistent effort towards achieving mentorship program goals.' },
-        { title: 'Vision and Strategic Thinking', description: 'Vision and strategic thinking help in setting long-term goals and planning for growth.' },
-        { title: 'Role Model and Integrity', description: 'Being a role model with integrity sets a positive example for mentees and peers.' }
+        { title: 'Leadership', description: 'A good leader allows for the club\'s full potential to be utilized to benefit the school.' },
+        { title: 'Communication', description: 'Clarity in communication ensures nothing is misunderstood when running an event.' },
+        { title: 'Organization', description: 'Effective planning begins with organization. An unorganized event will not be successful!' },
+        { title: 'Empathy', description: 'Understanding other\'s perspectives is the building block of planning excellent school events.' },
+        { title: 'Adaptability', description: 'Being able to adapt to a situation ensures success even when an unforeseeable event occurs.' },
+        { title: 'Commitment', description: 'A lack of commitment hinders upon all other important traits of being a mentor president.' },
+        { title: 'Vision', description: 'Vision and strategic thinking help in setting long-term goals and planning for growth.' },
+        { title: 'Role Model', description: 'Being a role model sets a positive example for those around you.' }
     ];
 
-    const dial = document.querySelector('.dial');
-    const labels = document.querySelector('.labels');
-    const centerDescription = document.querySelector('.description');
+    const buttonsContainer = document.querySelector('.buttons-characteristics');
+    const centerDescription = document.querySelector('.description-characteristics');
 
     const angleIncrement = 360 / characteristics.length;
-    let isDragging = false;
-    let startAngle = 0;
-    let currentAngle = 0;
+    const radius = 200; // Radius for button placement
 
-    // Create labels around the dial
+    // Create buttons around the center
     characteristics.forEach((char, index) => {
-        const label = document.createElement('div');
-        label.classList.add('label');
-        label.style.transform = `rotate(${index * angleIncrement}deg)`;
-        labels.appendChild(label);
+        const button = document.createElement('button');
+        button.classList.add('button-characteristics');
+        button.textContent = char.title;
 
-        const span = document.createElement('span');
-        span.textContent = char.title;
-        label.appendChild(span);
+        // Calculate button position
+        const angle = index * angleIncrement;
+        const radian = (angle * Math.PI) / 180;
+        const x = radius * Math.cos(radian);
+        const y = radius * Math.sin(radian);
 
-        // Store description in custom data attribute
-        label.dataset.description = char.description;
-    });
+        // Set button positions dynamically
+        button.style.left = `calc(50% + ${x}px - 50px)`; // Adjusted for button width
+        button.style.top = `calc(50% + ${y}px - 20px)`; // Adjusted for button height
 
-    // Function to update the bolded label and center description
-    function updateCurrentLabel() {
-        const adjustedAngle = (currentAngle % 360 + 360) % 360;
-        const currentLabelIndex = Math.round(adjustedAngle / angleIncrement) % characteristics.length;
-        const labelsArray = document.querySelectorAll('.label');
-        
-        labelsArray.forEach((label, index) => {
-            if (index === currentLabelIndex) {
-                label.classList.add('bold');
-                centerDescription.textContent = characteristics[index].description;
-            } else {
-                label.classList.remove('bold');
-            }
+        buttonsContainer.appendChild(button);
+
+        // Add click event to update the description in the center
+        button.addEventListener('click', () => {
+            centerDescription.textContent = char.description;
         });
-    }
-
-    // Helper function to get the angle from the mouse event
-    function getAngle(event, centerX, centerY) {
-        return Math.atan2(event.clientY - centerY, event.clientX - centerX) * (180 / Math.PI);
-    }
-
-    // Event listeners for mouse interactions
-    dial.addEventListener('mousedown', function(event) {
-        isDragging = true;
-        const rect = dial.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        startAngle = getAngle(event, centerX, centerY) - currentAngle;
     });
 
-    document.addEventListener('mousemove', function(event) {
-        if (isDragging) {
-            const rect = dial.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const newAngle = getAngle(event, centerX, centerY);
-            currentAngle = newAngle - startAngle;
-            dial.style.setProperty('--angle', `${currentAngle}deg`);
-            updateCurrentLabel();
+    // Initial setup to show the first characteristic's description
+    centerDescription.textContent = characteristics[0].description;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const events = [
+        { title: 'Interviews', description: 'Description for Event 1' },
+        { title: 'Steam Day', description: 'Description for Event 2' },
+        { title: 'School Tours', description: 'Description for Event 3' },
+        { title: 'Grade 8 Tour', description: 'Description for Event 4' },
+        { title: 'Grade 8/9 Night', description: 'Description for Event 5' },
+        { title: 'Club Fair', description: 'Description for Event 6' },
+        { title: 'Terry Fox Walk', description: 'Description for Event 7' },
+        { title: 'Orientation Day', description: 'Description for Event 8' }
+    ];
+
+    const buttonsContainer = document.querySelector('.buttons-events');
+    const descriptionBox = document.querySelector('.description-events');
+
+    // Create buttons based on events
+    events.forEach((event) => {
+        const button = document.createElement('button');
+        button.classList.add('button-events');
+        button.textContent = event.title;
+        button.dataset.description = event.description;
+
+        button.addEventListener('click', () => {
+            descriptionBox.textContent = event.description;
+        });
+
+        buttonsContainer.appendChild(button);
+    });
+
+    // Initial setup to show the default description
+    descriptionBox.textContent = 'Select an event to view its details.';
+});
+
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initial page to show
+    showPage('page1');
+
+    // Get references to navigation arrows
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+
+    // Add click event listeners to navigation arrows
+    leftArrow.addEventListener('click', function() {
+        // Determine current visible page
+        let currentPage;
+        if (document.getElementById('page1').style.display !== 'none') {
+            currentPage = 'page1';
+        } else if (document.getElementById('page2').style.display !== 'none') {
+            currentPage = 'page2';
+        } else if (document.getElementById('page3').style.display !== 'none') {
+            currentPage = 'page3';
+        } else if (document.getElementById('page4').style.display !== 'none') {
+            currentPage = 'page4';
+        }
+
+        // Determine which page to show next
+        if (currentPage === 'page1') {
+            hideAllPages();
+            showPage('page4'); // Wrap around to page4 if at the beginning
+        } else if (currentPage === 'page2') {
+            hideAllPages();
+            showPage('page1');
+        } else if (currentPage === 'page3') {
+            hideAllPages();
+            showPage('page2');
+        } else if (currentPage === 'page4') {
+            hideAllPages();
+            showPage('page3');
         }
     });
 
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
+    rightArrow.addEventListener('click', function() {
+        // Determine current visible page
+        let currentPage;
+        if (document.getElementById('page1').style.display !== 'none') {
+            currentPage = 'page1';
+        } else if (document.getElementById('page2').style.display !== 'none') {
+            currentPage = 'page2';
+        } else if (document.getElementById('page3').style.display !== 'none') {
+            currentPage = 'page3';
+        } else if (document.getElementById('page4').style.display !== 'none') {
+            currentPage = 'page4';
+        }
+
+        // Determine which page to show next
+        if (currentPage === 'page1') {
+            hideAllPages();
+            showPage('page2');
+        } else if (currentPage === 'page2') {
+            hideAllPages();
+            showPage('page3');
+        } else if (currentPage === 'page3') {
+            hideAllPages();
+            showPage('page4');
+        } else if (currentPage === 'page4') {
+            hideAllPages();
+            showPage('page1'); // Wrap around to page1 if at the end
+        }
     });
 
-    document.addEventListener('mouseleave', function() {
-        isDragging = false;
-    })
+    // Function to hide all pages
+    function hideAllPages() {
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('page2').style.display = 'none';
+        document.getElementById('page3').style.display = 'none';
+        document.getElementById('page4').style.display = 'none';
+    }
 
-    // Initial setup to ensure the first label is bolded and description is shown
-    updateCurrentLabel();
+    // Function to show a specific page
+    function showPage(pageId) {
+        document.getElementById(pageId).style.display = 'block';
+    }
 });

@@ -8,22 +8,75 @@
 </head>
 <body>
     <div id="container">
-        <h1>Raymond Zheng</h1>
-        
-        <!-- Dial container -->
-        <div class="dial-container">
-            <!-- Dial itself -->
-            <div class="dial">
-                <div class="pointer"></div>
-                <div class="labels">
-                    <!-- Labels will be dynamically added through JavaScript -->
+        <div id="page1" class="page">
+            <!-- Characteristic dial container -->
+            <div class="dial-container">
+                <div class="buttons-characteristics">
+                    <!-- Buttons will be dynamically added through JavaScript -->
                 </div>
                 <div class="center">
                     <!-- Center will display the description -->
-                    <p class="description">Select a characteristic to view its importance.</p>
+                    <p class="description-characteristics">Select a characteristic to view its importance.</p>
                 </div>
             </div>
         </div>
+
+        <div id="page2" class="page">
+            <!-- Event selection container -->
+            <div class="event-container">
+                <div class="label least-successful">Least Successful</div>
+                <div class="buttons-events">
+                    <!-- Buttons will be dynamically added through JavaScript -->
+                </div>
+                <div class="label most-successful">Most Successful</div>
+            </div>
+            <div class="description-box">
+                <p class="description-events">Select an event to view its details.</p>
+            </div>
+        </div>
+
+        <div id="page3" class="page">
+            <div id="aboutMe">
+                <h2>About Me</h2>
+                <p>Stuff about Raymond Zheng...</p>
+            </div>
+        </div>
+
+        <div id="page4" class="page">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="img/event1.jpg" alt="Event 1">
+                    <div class="caption">Event 1 Description</div>
+                </div>
+                <div class="slide">
+                    <img src="img/event2.jpg" alt="Event 2">
+                    <div class="caption">Event 2 Description</div>
+                </div>
+                <div class="slide">
+                    <img src="img/event3.jpg" alt="Event 3">
+                    <div class="caption">Event 3 Description</div>
+                </div>
+                <!-- Add more slides as needed -->
+
+                <!-- Navigation arrows -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                <!-- Dots/bullets for slide indicators -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <!-- Add more dots as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-arrows">
+        <div class="arrow left-arrow"><p><</p></div>
+        <div class="arrow right-arrow"><p>></p></div>
     </div>
 
     <script src="script.js"></script>
