@@ -13,36 +13,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttonsContainer = document.querySelector('.buttons-characteristics');
     const centerDescription = document.querySelector('.description-characteristics');
 
-    const angleIncrement = 360 / characteristics.length;
-    const radius = 200; // Radius for button placement
+    const angleIncrement = (2 * Math.PI) / characteristics.length;
+    const radius = 150; // Radius for button placement
 
-    // Create buttons around the center
     characteristics.forEach((char, index) => {
+        const angle = index * angleIncrement;
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+
         const button = document.createElement('button');
         button.classList.add('button-characteristics');
         button.textContent = char.title;
 
-        // Calculate button position
-        const angle = index * angleIncrement;
-        const radian = (angle * Math.PI) / 180;
-        const x = radius * Math.cos(radian);
-        const y = radius * Math.sin(radian);
+        button.style.position = 'absolute';
+        button.style.left = `calc(50% + ${x}px - 50px)`;
+        button.style.top = `calc(50% + ${y}px - 20px)`;
 
-        // Set button positions dynamically
-        button.style.left = `calc(50% + ${x}px - 50px)`; // Adjusted for button width
-        button.style.top = `calc(50% + ${y}px - 20px)`; // Adjusted for button height
-
-        buttonsContainer.appendChild(button);
-
-        // Add click event to update the description in the center
         button.addEventListener('click', () => {
             centerDescription.textContent = char.description;
         });
+
+        buttonsContainer.appendChild(button);
     });
 
     // Initial setup to show the first characteristic's description
     centerDescription.textContent = characteristics[0].description;
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const events = [
@@ -64,9 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const button = document.createElement('button');
         button.classList.add('button-events');
         button.textContent = event.title;
+
+        // Store description in dataset for easy access
         button.dataset.description = event.description;
 
         button.addEventListener('click', () => {
+            // Update description box with event description
             descriptionBox.textContent = event.description;
         });
 
@@ -77,34 +77,33 @@ document.addEventListener('DOMContentLoaded', function() {
     descriptionBox.textContent = 'Select an event to view its details.';
 });
 
-
 let slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    showSlides(slideIndex += n);
 }
 
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+    showSlides(slideIndex = n);
 }
 
 function showSlides(n) {
-  let i;
-  const slides = document.getElementsByClassName("slide");
-  const dots = document.getElementsByClassName("dot");
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
+    let i;
+    const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
 }
 
 document.addEventListener('DOMContentLoaded', function() {
