@@ -12,9 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const buttonsContainer = document.querySelector('.buttons-characteristics');
     const centerDescription = document.querySelector('.description-characteristics');
-
     const angleIncrement = (2 * Math.PI) / characteristics.length;
-    const radius = 180; // Radius for button placement
+    const radius = 155;
 
     characteristics.forEach((char, index) => {
         const angle = index * angleIncrement;
@@ -24,10 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const button = document.createElement('button');
         button.classList.add('button-characteristics');
         button.textContent = char.title;
-
         button.style.position = 'absolute';
-        button.style.left = `calc(50% + ${x}px - 50px)`;
-        button.style.top = `calc(50% + ${y}px - 50px)`; // Adjusted top position for better alignment
+        button.style.left = `calc(50% + ${x}px - 43px)`;
+        button.style.top = `calc(50% + ${y}px - 43px)`;
 
         button.addEventListener('click', () => {
             centerDescription.textContent = char.description;
@@ -36,57 +34,46 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonsContainer.appendChild(button);
     });
 
-    // Set the initial description to the default message
     centerDescription.textContent = 'Select a characteristic to view its importance.';
 });
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const events = [
         { title: 'Interviews', description: 'Parent Teacher Interviews saw little success as mentor volunteers were poorly organized. Most mentors stayed at the back foyer, resulting in little help being provided around the rest of the school.' },
         { title: 'Steam Day', description: 'Although many mentors offered to help lead groups of grade 8s on STEAM day, many mentors backed out of the commitment last minute. This resulted in a scramble to find replacements.' },
         { title: 'School Tours', description: 'Throughout the year, many parents ask for tours of the school. Overall, the tours had some success, however not everyone was always available to give a tour.' },
-        { title: 'Grade 8 Tour', description: 'The grade 8 tour at the end of semester 2 showed moderate success through well planned activities. Unfortunately some enthusiasm was lost by the mentors following the tour of the inside of the school.' },
+        { title: 'Grade 8 Tour', description: 'The grade 8 tour at the end of semester 2 showed moderate success through well planned activities. Unfortunately some enthusiasm was lost by the mentors after the tours of the inside of the school.' },
         { title: 'Grade 8/9 Night', description: 'The grade 8/9 night was relatively successful as it was well planned and there were many mentors who volunteered to help tour the grade 8/9 groups.' },
         { title: 'Club Fair', description: 'A large number of clubs were displayed at the club fair this year. The variety of clubs this year was greater than the previous year, exemplifying growth and improvement.' },
         { title: 'Terry Fox Walk', description: 'Many mentor volunteers helped with the terry fox walk. All mentors showed great energy and effort, collectively resulting in a well run event!' },
-        { title: 'Orientation Day', description: 'The grade 9 orientation day at the beginning of the year underwent tremendous planning ahead of time. This, coupled with the enthusiam of all the mentors resulted in an unforgettable orientation day for staff and students!' }
+        { title: 'Orientation Day', description: 'The grade 9 orientation day at the beginning of the year underwent tremendous planning ahead of time. This, coupled with the enthusiasm of all the mentors resulted in an unforgettable orientation day for staff and students!' }
     ];
 
     const buttonsContainer = document.querySelector('.buttons-events');
     const descriptionBox = document.querySelector('.description-events');
 
-    // Create buttons based on events
     events.forEach((event) => {
         const button = document.createElement('button');
         button.classList.add('button-events');
         button.textContent = event.title;
-
-        // Store description in dataset for easy access
         button.dataset.description = event.description;
 
         button.addEventListener('click', () => {
-            // Update description box with event description
             descriptionBox.textContent = event.description;
         });
 
         buttonsContainer.appendChild(button);
     });
 
-    // Initial setup to show the default description
     descriptionBox.textContent = 'Select an event to view its details.';
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initial page to show
     showPage('page1');
 
-    // Get references to navigation arrows
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
 
-    // Add click event listeners to navigation arrows
     leftArrow.addEventListener('click', function() {
         navigatePages(-1);
     });
@@ -95,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         navigatePages(1);
     });
 
-    // Function to navigate between pages
     function navigatePages(direction) {
         let currentPage = getCurrentPageId();
         let nextPageId;
@@ -127,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showPage(nextPageId);
     }
 
-    // Function to get the ID of the current visible page
     function getCurrentPageId() {
         const pages = document.querySelectorAll('.page');
         for (let page of pages) {
@@ -138,15 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return null;
     }
 
-    // Function to hide all pages
     function hideAllPages() {
         const pages = document.querySelectorAll('.page');
-        for (let page of pages) {
-            page.style.display = 'none';
-        }
+        pages.forEach(page => page.style.display = 'none');
     }
 
-    // Function to show a specific page
     function showPage(pageId) {
         document.getElementById(pageId).style.display = 'block';
     }
