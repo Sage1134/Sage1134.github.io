@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const centerDescription = document.querySelector('.description-characteristics');
 
     const angleIncrement = (2 * Math.PI) / characteristics.length;
-    const radius = 150; // Radius for button placement
+    const radius = 175; // Radius for button placement
 
     characteristics.forEach((char, index) => {
         const angle = index * angleIncrement;

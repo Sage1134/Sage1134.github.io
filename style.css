@@ -104,8 +104,8 @@ h1, h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    height: 100%;
+    flex-direction: row;
+    height: 75%;
     padding: 20px;
 }
 
@@ -125,9 +125,10 @@ h1, h2 {
 
 .buttons-events {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     margin-top: 10px;
+    width: auto;
 }
 
 .button-events {
@@ -135,12 +136,17 @@ h1, h2 {
     color: white;
     border: none;
     border-radius: 10px;
-    margin: 5px;
-    padding: 10px 20px;
+    margin: 2px;
+    padding: 5px 10px; /* Adjust padding as needed */
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.7vw; /* Adjust font size as needed */
     text-align: center;
+    white-space: nowrap; /* Prevent line break */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis for overflow */
+    max-width: calc(100% - 10px); /* Ensure buttons do not overflow container */
 }
+
 
 /* CSS for description box */
 .description-box {
@@ -151,7 +157,7 @@ h1, h2 {
     width: 80%;
     background-color: #f9f9f9;
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
