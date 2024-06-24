@@ -4,84 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Portfolio | Raymond Zheng</title>
+    <title>Application | Raymond Zheng</title>
 </head>
 <body>
-    <div id="overlay">
     <div id="container">
-        <div id="head"></div>
-        <div id="nav">
-            <button id="introButton" class="navButton">Home</button>
-            <button id="projectsButton" class="navButton">Projects</button>
-            <button id="contactButton" class="navButton">Contact</button>
-        </div>
-        <div id="intro">
-            <div id="introContainer">
-                <h1 id="introHeader">Hello, I'm Raymond,</h1>
-                <div id="introTextBox">
-                    <p id="introText">an aspiring software engineer! I am currently proficient in Python, C#, C++, HTML, CSS and Javascript, but continue to learn more every day. I am passionate about leveraging technology to develop innovative solutions to make the world a better place. I am eager to contribute my experiences to the field of Computer Science and proceed on a rewarding journey of continuous learning and growth.</p>
+        <h1>Raymond Zheng</h1>
+        
+        <!-- Dial container -->
+        <div class="dial-container">
+            <!-- Dial itself -->
+            <div class="dial">
+                <div class="pointer"></div>
+                <div class="labels">
+                    <!-- Labels will be dynamically added through JavaScript -->
                 </div>
-            </div>
-            <div id="highlightedProject">
-                <div id="highlightedContents">
-                    <h1>Recent Project</h1>
-                    <a href="projects/secureInsights.html" target="_blank">
-                        <button id="highlightedButton">Explore Now</button>
-                    </a>
+                <div class="center">
+                    <!-- Center will display the description -->
+                    <p class="description">Select a characteristic to view its importance.</p>
                 </div>
-                <div id="overlay"></div>
-            </div>
-        </div>
-        <div id="projects">
-            <h1 id="projectsHeader">Projects</h1>
-            <div id="projectFolder">
-                <div class="project" id="secureInsights">
-                    <div class="projectContainer">
-                        <label class="projectLabel">Secure Insights</label>
-                        <a href="projects/secureInsights.html" target="_blank">
-                            <button class="projectButton" id="secureInsightsButton">View Project</button>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="project" id="connect">
-                    <div class="projectContainer">
-                        <label class="projectLabel">Connect</label>
-                        <a href="projects/connect.html" target="_blank">
-                            <button class="projectButton" id="connectButton">View Project</button>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="project" id="cursorArena">
-                    <div class="projectContainer">
-                        <label class="projectLabel">Cursor Arena</label>
-                        <a href="projects/cursorArena.html" target="_blank">
-                            <button class="projectButton" id="cursorArenaButton">View Project</button>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="project" id="minesweeper">
-                    <div class="projectContainer">
-                        <label class="projectLabel">Minesweeper</label>
-                        <a href="projects/minesweeper.html" target="_blank">
-                            <button class="projectButton" id="minesweeperButton">View Project</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="bottom">
-            <div id="contactInfo">
-                <h2>Contact Information</h2>
-                <p><strong>Email:</strong> Raymondzheng2000@gmail.com</p>
-                <p><strong>Phone:</strong> +1 437-986-6118</p>
-                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/raymond-zheng-b50b62288" class="link">Visit my LinkedIn</a></p>
-                <p><strong>Github:</strong> <a href="https://github.com/Sage1134" class="link">Visit my Github</a></p>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
