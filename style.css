@@ -8,6 +8,7 @@ body {
     background-position: center center;
     height: 100vh;
     animation: pageLoadAnimation 6s ease; /* Animation on page load */
+    overflow: hidden;
 }
 
 @keyframes pageLoadAnimation {
