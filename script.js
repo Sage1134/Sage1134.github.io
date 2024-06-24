@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const centerDescription = document.querySelector('.description-characteristics');
 
     const angleIncrement = (2 * Math.PI) / characteristics.length;
-    const radius = 175; // Radius for button placement
+    const radius = 180; // Radius for button placement
 
     characteristics.forEach((char, index) => {
         const angle = index * angleIncrement;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         button.style.position = 'absolute';
         button.style.left = `calc(50% + ${x}px - 50px)`;
-        button.style.top = `calc(50% + ${y}px - 20px)`;
+        button.style.top = `calc(50% + ${y}px - 50px)`; // Adjusted top position for better alignment
 
         button.addEventListener('click', () => {
             centerDescription.textContent = char.description;
@@ -36,21 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonsContainer.appendChild(button);
     });
 
-    // Initial setup to show the first characteristic's description
-    centerDescription.textContent = characteristics[0].description;
+    // Set the initial description to the default message
+    centerDescription.textContent = 'Select a characteristic to view its importance.';
 });
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
     const events = [
-        { title: 'Interviews', description: 'Description for Event 1' },
-        { title: 'Steam Day', description: 'Description for Event 2' },
-        { title: 'School Tours', description: 'Description for Event 3' },
-        { title: 'Grade 8 Tour', description: 'Description for Event 4' },
-        { title: 'Grade 8/9 Night', description: 'Description for Event 5' },
-        { title: 'Club Fair', description: 'Description for Event 6' },
-        { title: 'Terry Fox Walk', description: 'Description for Event 7' },
-        { title: 'Orientation Day', description: 'Description for Event 8' }
+        { title: 'Interviews', description: 'Parent Teacher Interviews saw little success as mentor volunteers were poorly organized. Most mentors stayed at the back foyer, resulting in little help being provided around the rest of the school.' },
+        { title: 'Steam Day', description: 'Although many mentors offered to help lead groups of grade 8s on STEAM day, many mentors backed out of the commitment last minute. This resulted in a scramble to find replacements.' },
+        { title: 'School Tours', description: 'Throughout the year, many parents ask for tours of the school. Overall, the tours had some success, however not everyone was always available to give a tour.' },
+        { title: 'Grade 8 Tour', description: 'The grade 8 tour at the end of semester 2 showed moderate success through well planned activities. Unfortunately some enthusiasm was lost by the mentors following the tour of the inside of the school.' },
+        { title: 'Grade 8/9 Night', description: 'The grade 8/9 night was relatively successful as it was well planned and there were many mentors who volunteered to help tour the grade 8/9 groups.' },
+        { title: 'Club Fair', description: 'A large number of clubs were displayed at the club fair this year. The variety of clubs this year was greater than the previous year, exemplifying growth and improvement.' },
+        { title: 'Terry Fox Walk', description: 'Many mentor volunteers helped with the terry fox walk. All mentors showed great energy and effort, collectively resulting in a well run event!' },
+        { title: 'Orientation Day', description: 'The grade 9 orientation day at the beginning of the year underwent tremendous planning ahead of time. This, coupled with the enthusiam of all the mentors resulted in an unforgettable orientation day for staff and students!' }
     ];
 
     const buttonsContainer = document.querySelector('.buttons-events');
