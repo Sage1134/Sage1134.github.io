@@ -4,7 +4,7 @@ body {
     margin: 0;
     background: url("images/background.jpg") center center/cover no-repeat;
     height: 100vh;
-    animation: pageLoadAnimation 6s ease;
+    animation: pageLoadAnimation 2.5s ease;
     overflow: hidden;
 }
 
@@ -272,7 +272,7 @@ h1, h2 {
     border-width: 1px;
     border-color: black;
     border-style: solid;
-    background-color: rgba(20, 40, 80, 0.4);
+    background-color: rgba(0, 123, 255, 1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     display: flex;
@@ -285,11 +285,11 @@ h1, h2 {
 }
 
 .nav-arrows:hover {
-    background-color: rgba(20, 40, 80, 0.6);
+    background-color: rgba(0, 123, 255, 0.8);
 }
 
 .nav-arrows:active {
-    background-color: rgba(20, 40, 80, 0.7);
+    background-color: rgba(0, 123, 255, 0.7);
 }
 
 .left-arrow {
