@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const events = [
         { title: 'Interviews', description: 'Parent-Teacher Interviews saw limited success due to poorly organized mentor volunteers. Most mentors remained in the back foyer, resulting in insufficient support across the rest of the school.' },
-        { title: 'Steam Day', description: 'Many mentors initially volunteered to lead groups of grade 8 students on STEAM Day, but several withdrew last minute, leading to a scramble for replacements.' },
+        { title: 'Steam Day', description: 'Many grade 8 students were initially excited about STEAM day. However, there was some disappointment when some mentors withdrew last minute, causing a scramble to find replacements that were less prepared.' },
         { title: 'School Tours', description: 'Throughout the year, many parents requested tours of the school. While generally successful, availability of tour guides was sometimes limited.' },
         { title: 'Grade 8 Tour', description: 'The grade 8 tour at the end of semester 2 showed moderate success as a result of well planned activities. Unfortunately some enthusiasm was lost by the mentors after the tours of the inside of the school.' },
-        { title: 'Grade 8/9 Night', description: 'The Grade 8/9 Night was successful, thanks to in depth planning and enthusiastic mentor participation in guiding groups.' },
+        { title: 'Grade 8/9 Night', description: 'The Grade 8/9 Night was successful, thanks to in depth planning and enthusiastic mentor participation in guiding groups. The groups lead by the mentors showed appreciation the support from the group leaders.' },
         { title: 'Club Fair', description: 'A large number of clubs were displayed at the club fair this year. The variety of clubs this year was greater than the previous year, exemplifying growth and improvement.' },
-        { title: 'Terry Fox Walk', description: 'Many mentor volunteers contributed to the Terry Fox Walk with great energy and effort, resulting in a well-executed event.' },
+        { title: 'Terry Fox Walk', description: 'Many mentor volunteers contributed to the Terry Fox Walk with great energy and effort, resulting in a well-executed event. The encouragement from the mentors motivated participants to complete the walk.' },
         { title: 'Orientation Day', description: 'The grade 9 orientation day at the beginning of the year underwent a lot of planning ahead of time. This, coupled with the enthusiasm of all the mentors resulted in an unforgettable orientation day for staff and students!' }
     ];
 
