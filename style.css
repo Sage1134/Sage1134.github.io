@@ -59,6 +59,7 @@ h1, h2 {
     text-align: center;
     margin: 5vh;
     margin-bottom: 2rem;
+    color: rgb(20, 40, 60);
 }
 
 #white {
@@ -93,7 +94,7 @@ h1, h2 {
     position: absolute;
     width: 86px;
     height: 86px;
-    background-color: #007BFF;
+    background-color: rgb(0, 100, 200);
     color: white;
     border: 2px solid rgb(20, 40, 80);
     border-radius: 50px;
@@ -124,7 +125,7 @@ h1, h2 {
     width: 65%;
     height: 65%;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: rgb(222, 233, 250);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -139,7 +140,7 @@ h1, h2 {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgb(222, 233, 250, 0.4);
     height: 75%;
     padding: 0.3vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -150,16 +151,20 @@ h1, h2 {
 
 .gradient-bar {
     margin-top: 10px;
-    width: 70%;
-    height: 10px; /* Adjust height as needed */
-    background: linear-gradient(to right, red, yellow, green);
+    width: 72.5%;
+    height: 2vh; /* Adjust height as needed */
+    background: linear-gradient(to right, rgb(200, 50, 50), yellow, rgb(50, 200, 50));
+    border-radius: 0.5vh;
     z-index: -1; /* Ensure it's behind the labels */
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
 }
 
 #eventLabels {
     display: flex;
     justify-content: space-between;
-    width: 85%;
+    width: 88%;
     padding: 0 20px;
 }
 
@@ -191,7 +196,7 @@ h1, h2 {
 }
 
 .button-events {
-    background-color: #007BFF;
+    background-color: rgb(0, 100, 200);
     border: 1px solid rgb(20, 40, 80);
     color: white;
     border-radius: 5px;
@@ -220,7 +225,7 @@ h1, h2 {
     border: 1px solid black;
     border-radius: 10px;
     width: 60%;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgb(244, 244, 250, 0.6);
     position: absolute;
     top: 80%;
     left: 50%;
@@ -253,6 +258,13 @@ h1, h2 {
     overflow: hidden;
     border: 2px solid black;
     user-select: none;
+    transition: width 0.3s, max-width 0.3s, box-shadow 0.3s;
+}
+
+.slide:hover {
+    width: 80%;
+    max-width: 1100px;
+    box-shadow: 0, 0, 50px, rgba(0, 0, 0, 0.4);
 }
 
 .slide img {
@@ -263,7 +275,7 @@ h1, h2 {
 
 .caption {
     padding: 15px;
-    background-color: #007BFF;
+    background-color: rgb(0, 100, 200);
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
@@ -282,7 +294,7 @@ h1, h2 {
     border-width: 1px;
     border-color: black;
     border-style: solid;
-    background-color: rgba(0, 123, 255, 1);
+    background-color: rgb(0, 100, 200, 1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     display: flex;
@@ -295,11 +307,11 @@ h1, h2 {
 }
 
 .nav-arrows:hover {
-    background-color: rgba(0, 123, 255, 0.8);
+    background-color: rgb(0, 100, 200, 0.8);
 }
 
 .nav-arrows:active {
-    background-color: rgba(0, 123, 255, 0.7);
+    background-color: rgb(0, 100, 200, 0.7);
 }
 
 .left-arrow {
@@ -316,10 +328,10 @@ h1, h2 {
     margin: 10vh auto;
     text-align: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgb(222, 233, 250, 0.4);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    border: 1px solid black;
+    border: 2px solid black;
     overflow-y: auto;
     max-height: 70vh;
 }
@@ -327,7 +339,7 @@ h1, h2 {
 .section-title {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #007BFF;
+    color: rgb(20, 40, 60);
 }
 
 .anecdote-content {
