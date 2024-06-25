@@ -1,3 +1,5 @@
+const whooshSound = document.getElementById('whooshSound');
+
 document.addEventListener('DOMContentLoaded', function() {
     const characteristics = [
         { title: 'Leadership', description: 'A good leader allows for the club\'s full potential to be utilized to benefit the school.' },
@@ -6,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { title: 'Empathy', description: 'Understanding other\'s perspectives is the building block of planning excellent school events.' },
         { title: 'Adaptability', description: 'Being able to adapt to a situation ensures success even when an unforeseeable event occurs.' },
         { title: 'Commitment', description: 'A lack of commitment hinders upon all other important traits of being a mentor president.' },
-        { title: 'Vision', description: 'Vision and strategic thinking help in setting long-term goals and planning for growth.' },
-        { title: 'Role Model', description: 'Being a role model sets a positive example for those around you.' }
+        { title: 'Vision', description: 'A compelling vision guides the club towards impactful long-term goals and inspires its members.' },
+        { title: 'Role Model', description: 'Being a role model exemplifies integrity, dedication, and positive influence for the entire school community.' }
     ];
 
     const buttonsContainer = document.querySelector('.buttons-characteristics');
@@ -39,14 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const events = [
-        { title: 'Interviews', description: 'Parent Teacher Interviews saw little success as mentor volunteers were poorly organized. Most mentors stayed at the back foyer, resulting in little help being provided around the rest of the school.' },
-        { title: 'Steam Day', description: 'Although many mentors offered to help lead groups of grade 8s on STEAM day, many mentors backed out of the commitment last minute. This resulted in a scramble to find replacements.' },
-        { title: 'School Tours', description: 'Throughout the year, many parents ask for tours of the school. Overall, the tours had some success, however not everyone was always available to give a tour.' },
-        { title: 'Grade 8 Tour', description: 'The grade 8 tour at the end of semester 2 showed moderate success through well planned activities. Unfortunately some enthusiasm was lost by the mentors after the tours of the inside of the school.' },
-        { title: 'Grade 8/9 Night', description: 'The grade 8/9 night was relatively successful as it was well planned and there were many mentors who volunteered to help tour the grade 8/9 groups.' },
+        { title: 'Interviews', description: 'Parent-Teacher Interviews saw limited success due to poorly organized mentor volunteers. Most mentors remained in the back foyer, resulting in insufficient support across the rest of the school.' },
+        { title: 'Steam Day', description: 'Many mentors initially volunteered to lead groups of grade 8 students on STEAM Day, but several withdrew last minute, leading to a scramble for replacements.' },
+        { title: 'School Tours', description: 'Throughout the year, many parents requested tours of the school. While generally successful, availability of tour guides was sometimes limited.' },
+        { title: 'Grade 8 Tour', description: 'The grade 8 tour at the end of semester 2 showed moderate success as a result of well planned activities. Unfortunately some enthusiasm was lost by the mentors after the tours of the inside of the school.' },
+        { title: 'Grade 8/9 Night', description: 'The Grade 8/9 Night was successful, thanks to in depth planning and enthusiastic mentor participation in guiding groups.' },
         { title: 'Club Fair', description: 'A large number of clubs were displayed at the club fair this year. The variety of clubs this year was greater than the previous year, exemplifying growth and improvement.' },
-        { title: 'Terry Fox Walk', description: 'Many mentor volunteers helped with the terry fox walk. All mentors showed great energy and effort, collectively resulting in a well run event!' },
-        { title: 'Orientation Day', description: 'The grade 9 orientation day at the beginning of the year underwent tremendous planning ahead of time. This, coupled with the enthusiasm of all the mentors resulted in an unforgettable orientation day for staff and students!' }
+        { title: 'Terry Fox Walk', description: 'Many mentor volunteers contributed to the Terry Fox Walk with great energy and effort, resulting in a well-executed event.' },
+        { title: 'Orientation Day', description: 'The grade 9 orientation day at the beginning of the year underwent a lot of planning ahead of time. This, coupled with the enthusiasm of all the mentors resulted in an unforgettable orientation day for staff and students!' }
     ];
 
     const buttonsContainer = document.querySelector('.buttons-events');
@@ -69,66 +71,62 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    showPage('page1');
+    const pages = document.querySelectorAll('.page');
+    let currentIndex = 0;
+
+    // Show the initial page
+    pages[currentIndex].classList.add('active');
 
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
 
     leftArrow.addEventListener('click', function() {
+        whooshSound.play();
         navigatePages(-1);
     });
 
     rightArrow.addEventListener('click', function() {
+        whooshSound.play();
         navigatePages(1);
     });
 
     function navigatePages(direction) {
-        let currentPage = getCurrentPageId();
-        let nextPageId;
+        const nextPageIndex = (currentIndex + direction + pages.length) % pages.length;
+        
+        // Check boundaries
+        if (nextPageIndex < 0 || nextPageIndex >= pages.length) {
+            return; // Do nothing if trying to go out of bounds
+        }
+        
+        // Slide out the current page
+        pages[currentIndex].classList.remove('active');
+        pages[currentIndex].classList.add(direction === 1 ? 'previous' : 'next');
 
-        switch (currentPage) {
-            case 'page1':
-                nextPageId = (direction === 1) ? 'page2' : 'page6';
-                break;
-            case 'page2':
-                nextPageId = (direction === 1) ? 'page3' : 'page1';
-                break;
-            case 'page3':
-                nextPageId = (direction === 1) ? 'page4' : 'page2';
-                break;
-            case 'page4':
-                nextPageId = (direction === 1) ? 'page5' : 'page3';
-                break;
-            case 'page5':
-                nextPageId = (direction === 1) ? 'page6' : 'page4';
-                break;
-            case 'page6':
-                nextPageId = (direction === 1) ? 'page1' : 'page5';
-                break;
-            default:
-                break;
+        // Slide in the next page
+        pages[nextPageIndex].classList.add('active');
+        pages[nextPageIndex].classList.remove('previous', 'next');
+
+        currentIndex = nextPageIndex;
+
+        // Manage arrow visibility
+        manageArrowVisibility();
+    }
+    
+    // Function to manage arrow visibility based on current page index
+    function manageArrowVisibility() {
+        if (currentIndex === 0) {
+            leftArrow.style.display = 'none';
+        } else {
+            leftArrow.style.display = 'flex';
         }
 
-        hideAllPages();
-        showPage(nextPageId);
-    }
-
-    function getCurrentPageId() {
-        const pages = document.querySelectorAll('.page');
-        for (let page of pages) {
-            if (page.style.display === 'block') {
-                return page.id;
-            }
+        if (currentIndex === pages.length - 1) {
+            rightArrow.style.display = 'none';
+        } else {
+            rightArrow.style.display = 'flex';
         }
-        return null;
     }
 
-    function hideAllPages() {
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(page => page.style.display = 'none');
-    }
-
-    function showPage(pageId) {
-        document.getElementById(pageId).style.display = 'block';
-    }
+    // Manage arrow visibility
+    manageArrowVisibility();
 });
