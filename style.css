@@ -145,12 +145,21 @@ h1, h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    position: relative; /* Ensure relative positioning for children */
+}
+
+.gradient-bar {
+    margin-top: 10px;
+    width: 70%;
+    height: 10px; /* Adjust height as needed */
+    background: linear-gradient(to right, red, yellow, green);
+    z-index: -1; /* Ensure it's behind the labels */
 }
 
 #eventLabels {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 85%;
     padding: 0 20px;
 }
 
@@ -162,15 +171,16 @@ h1, h2 {
 }
 
 .least-successful {
-    margin: 10px;
+    margin: 4px;
     color: rgb(200, 50, 50);
+    font-size: 1.25vw;
 }
 
 .most-successful {
-    margin: 10px;
+    margin: 4px;
     color: rgb(50, 200, 50);
+    font-size: 1.25vw;
 }
-
 .buttons-events {
     display: flex;
     flex-wrap: nowrap;
