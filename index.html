@@ -4,102 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Application | Raymond Zheng</title>
+    <title>Portfolio | Raymond Zheng</title>
 </head>
 <body>
-    <audio id="whooshSound" src="whoosh.mp3"></audio>
-    <div class="nav-arrows left-arrow"><p>◄</p></div>
-    <div class="nav-arrows right-arrow"><p>►</p></div>
-
+    <div id="overlay">
     <div id="container">
-        <div id="page1" class="page">
-            <div id="white"></div>
-            <h1>What makes a good mentor president?</h1>
-            <div class="dial-container">
-                <div class="buttons-characteristics"></div>
-                <div class="center">
-                    <p class="description-characteristics">Select a characteristic to view its importance.</p>
+        <div id="head"></div>
+        <div id="nav">
+            <button id="introButton" class="navButton">Home</button>
+            <button id="projectsButton" class="navButton">Projects</button>
+            <button id="contactButton" class="navButton">Contact</button>
+        </div>
+        <div id="intro">
+            <div id="introContainer">
+                <h1 id="introHeader">Hello, I'm Raymond,</h1>
+                <div id="introTextBox">
+                    <p id="introText">an aspiring software engineer! I am currently proficient in Python, C#, C++, HTML, CSS and Javascript, but continue to learn more every day. I am passionate about leveraging technology to develop innovative solutions to make the world a better place. I am eager to contribute my experiences to the field of Computer Science and proceed on a rewarding journey of continuous learning and growth.</p>
+                </div>
+            </div>
+            <div id="highlightedProject">
+                <div id="highlightedContents">
+                    <h1>Recent Project</h1>
+                    <a href="projects/secureInsights.html" target="_blank">
+                        <button id="highlightedButton">Explore Now</button>
+                    </a>
+                </div>
+                <div id="overlay"></div>
+            </div>
+        </div>
+        <div id="projects">
+            <h1 id="projectsHeader">Projects</h1>
+            <div id="projectFolder">
+                <div class="project" id="secureInsights">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Secure Insights</label>
+                        <a href="projects/secureInsights.html" target="_blank">
+                            <button class="projectButton" id="secureInsightsButton">View Project</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project" id="connect">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Connect</label>
+                        <a href="projects/connect.html" target="_blank">
+                            <button class="projectButton" id="connectButton">View Project</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project" id="cursorArena">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Cursor Arena</label>
+                        <a href="projects/cursorArena.html" target="_blank">
+                            <button class="projectButton" id="cursorArenaButton">View Project</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project" id="minesweeper">
+                    <div class="projectContainer">
+                        <label class="projectLabel">Minesweeper</label>
+                        <a href="projects/minesweeper.html" target="_blank">
+                            <button class="projectButton" id="minesweeperButton">View Project</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div id="page2" class="page">
-            <h1>A glance at this year's event success levels</h1>
-            <div class="event-container">
-                <div id="eventLabels">
-                    <div class="label least-successful">Least Successful</div>
-                    <div class="gradient-bar"></div>
-                    <div class="label most-successful">Most Successful</div>
-                </div>
-                <div class="buttons-events"></div>
-            </div>
-            <div class="description-box">
-                <p class="description-events">Select an event to view its details.</p>
-            </div>
-        </div>     
-
-        <div id="page3" class="page">
-            <div id="aboutMe" class="about-me-container">
-                <h2 class="section-title">Forging An Opportunity: What Sets Me Apart</h2>
-                <div class="anecdote-content">
-                    <p>
-                        I am excited about the opportunity to serve as next year's Mentor president. What sets me apart from the other candidates is my ability to assess a
-                        situation, adapt to it and plan accordingly. 
-                    </p>
-                    <p>
-                        Throughout high school, I have always wanted to pursue computer science as my post-secondary. I was told by my family “Get work experience! Get a Computer
-                        Sience Internship! That will give you a head start and set you apart from the rest”. So I tried, I tried to find an opportunity; disappointingly, I found
-                        that it is incredibly rare for a computer science position to be open to a high school student. My friends encouraged me, “Build connections! Get a Computer
-                        Science Internship!” they said. So I tried, I tried to build connections; Unfortunately strong connections were hard to come by. Then one day, I was struck
-                        with an idea: Adapt to the circumstances and create an opportunity myself. With determination, I founded a summer code camp, ByteQuest Academy. Due the
-                        limited opportunities provided to high school students in the computer science industry, I adapted and create a program that allows me to gain experience and
-                        build strong connections while developing the skills of other aspiring computer scientists.
-                    </p>
-                    <p>
-                        My initiative, ByteQuest Academy, also exemplifies the other characteristics of a good mentor president: leadership, communication, organization, empathy,
-                        commitment, vision and effective role modeling. Organizing this initiative requires significant leadership abilities to oversee the overall operations of
-                        the camp. Communication is crucial for the camp, as I work with my volunteers and participants to ensure they understand the material and feel supported.
-                        Additionally, organization is a major aspect of the initiative, as I create lesson plans and schedules, and manage camp logistics. Empathy plays a vital
-                        role in my ability to understand the diverse backgrounds and learning paces of participants, allowing me to fine-tune the lessons, to meet everyone's needs.
-                        My commitment to the camp is demonstrated through the hours spent working towards my vision for the camp: to provide free coding lessons to aspiring computer
-                        scientists. Throughout the entire initiative, I take on the position of a role model for both my volunteers and camp participants.
-                    </p>
-                    <p>
-                        My experience with ByteQuest Academy is one of my many experiences that exemplifies the qualities that make me an ideal mentor president. I plan
-                        to bring the same dedication and commitment I have from ByteQuest Academy to Mentors.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div id="page4" class="page">
-            <div class="slide">
-                <a href="images/reflection.png" target="_blank">
-                    <img src="images/reflection.png" alt="Improvement 1">
-                </a>
-                <div class="caption">2024 - 2025 Improvements: Event Reflection Sessions</div>
-            </div>
-        </div>
-        
-        <div id="page5" class="page">
-            <div class="slide">
-                <a href="images/connections.png" target="_blank">
-                    <img src="images/connections.png" alt="Improvement 2">
-                </a>
-                <div class="caption">2024 - 2025 Improvements: Weaving Connections</div>
-            </div>
-        </div>
-        
-        <div id="page6" class="page">
-            <div class="slide">
-                <a href="images/consistency.png" target="_blank">
-                    <img src="images/consistency.png" alt="Improvement 3">
-                </a>
-                <div class="caption">2024 - 2025 Improvements: Year-Round Consistency</div>
+        <div id="bottom">
+            <div id="contactInfo">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> Raymondzheng2000@gmail.com</p>
+                <p><strong>Phone:</strong> +1 437-986-6118</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/raymond-zheng-b50b62288" class="link">Visit my LinkedIn</a></p>
+                <p><strong>Github:</strong> <a href="https://github.com/Sage1134" class="link">Visit my Github</a></p>
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
