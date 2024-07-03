@@ -249,19 +249,19 @@ body {
 }
 
 #secureInsights {
-    background-image: url("Images/secureInsightsIcon.png");
+    background-image: url("images/secureInsightsIcon.png");
 }
 
 #connect {
-    background-image: url("Images/connectIcon.png");
+    background-image: url("images/connectIcon.png");
 }
 
 #cursorArena {
-    background-image: url("Images/cursorArenaIcon.png");
+    background-image: url("images/cursorArenaIcon.png");
 }
 
 #minesweeper {
-    background-image: url("Images/minesweeperIcon.png");
+    background-image: url("images/minesweeperIcon.png");
 }
 
 ::-webkit-scrollbar {
